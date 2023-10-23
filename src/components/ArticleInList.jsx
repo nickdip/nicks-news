@@ -2,12 +2,13 @@ import React from 'react'
 import "../styles/Article.css"
 import dateFormat from "../utils/dateFormat"
 import bodyPreview from "../utils/bodyPreview"
+import { Link } from 'react-router-dom'
 
 export default function Article({article}) {
     return (
     <ul key={`${article.article_id}-items`} className="article-list">
         <div className="article-grid">
-        <li key={`${article.article_id}-title`} className="article-list-title">{article.title}</li>
+        <li key={`${article.article_id}-title`} className="article-list-title"><Link to={`/articles/${article.article_id}`}>{article.title}</Link></li>
         <li key={`${article.article_id}-topic`} className="article-list-topic">{article.topic}</li>
         <li key={`${article.article_id}-author`} className="article-list-author">{article.author}</li>
         <li key={`${article.article_id}-date`} className="article-list-date">{dateFormat(article.created_at)}</li>

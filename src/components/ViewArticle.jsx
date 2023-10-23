@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import NewsAPI from "../api.js"
 import { useParams } from 'react-router-dom';
 import dateFormat from '../utils/dateFormat.js';
+import '../styles/viewArticle.css'
+
 
 export default function ViewArticle() {
 
@@ -18,15 +20,15 @@ export default function ViewArticle() {
 
     if (article.article_id) return (
     <div className="viewArticleGrid">
-    <div className="viewArticle-id">{article.article_id}</div>
+    <div className="viewArticle-id">#{article.article_id}</div>
     <div className="viewArticle-topic">{article.topic}</div>
-    <h2 className="viewArticle-title">{article.title}</h2>
-    <div className="viewArticle-id">{dateFormat(article.created_at)}</div>
-    <div>{article.author}</div>
-    <div>{article.article_img_url}</div>
-    <div>{article.body}</div>
-    <div>{article.votes}</div>
-    <div>{article.comment_count}</div>
+    <h1 className="viewArticle-title">{article.title}</h1>
+    <div className="viewArticle-date">{dateFormat(article.created_at)}</div>
+    <div className="viewArticle-author">{article.author}</div>
+    <div className="viewArticle-img-url"><img src={article.article_img_url} className="viewArticle-img-size" alt={`Picture for article with title ${article.topic}`}/></div>
+    <div className="viewArticle-body">{article.body}</div>
+    <div className="viewArticle-votes">{article.votes}<img src="./src/static/votes.png" className="viewArticle-votes-picture"/></div>
+    <div className="viewArticle-comment">Comments ({article.comment_count})</div>
 
     </div>
   )
