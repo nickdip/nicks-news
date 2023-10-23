@@ -27,7 +27,7 @@ export default function ViewArticle() {
     <div className="viewArticle-author">{article.author}</div>
     <div className="viewArticle-img-url"><img src={article.article_img_url} className="viewArticle-img-size" alt={`Picture for article with title ${article.topic}`}/></div>
     <div className="viewArticle-body">{article.body}</div>
-    <div className="viewArticle-votes">{article.votes}<img src="./src/static/votes.png" className="viewArticle-votes-picture"/></div>
+    <div className="viewArticle-votes">{article.votes}<img src="../src/static/votes.png" className="viewArticle-votes-picture"/></div>
     <div className="viewArticle-comment">Comments ({article.comment_count})</div>
 
     </div>
