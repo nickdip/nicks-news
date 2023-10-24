@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/header.css'
 import NewsAPI from '../api.js'
-import { set } from 'husky'
 
 export default function Header() {
 

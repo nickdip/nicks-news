@@ -10,7 +10,14 @@ class NewsAPI {
     get(endpoint) {
         return this.api.get(`${this.url}/${endpoint}`).then(({data}) => data)
         .catch((err) => {
-            throw new Error(`Error with API Request: ${err}`)
+            throw new Error(`Error with API GET Request: ${err}`)
+        })
+    }
+
+    patch(endpoint, body) {
+        return this.api.patch(`${this.url}/${endpoint}`, body).then(({data}) => data)
+        .catch((err) => {
+            throw new Error(`Error with API PATCH Request: ${err}`)
         })
     }
 
@@ -28,6 +35,10 @@ class NewsAPI {
 
     getCommentsByArticleId(id) {
         return this.get(`articles/${id}/comments`);
+    }
+
+    patchArticleById(id, body) {
+        return this.patch(`articles/${id}`, body);
     }
 }
 

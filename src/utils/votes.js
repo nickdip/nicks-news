@@ -1,11 +1,6 @@
 
-export default function votesPic(vote) {
-    const pic = {"up": "../src/static/up.png", "down": "../src/static/down.png"}
-    
-    if (vote < 0) pic["down"]
-
-    return pic["up"]
-
-
-
+export default function votesColour(vote) {
+    if (vote < 0) return { color: "red" }
+    if (vote > 0) return { color: "green" }
+    return { color: "black" }
 }
