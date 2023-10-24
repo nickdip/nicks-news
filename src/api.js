@@ -17,6 +17,14 @@ class NewsAPI {
     getAllArticles() {
         return this.get('articles');
     }
+
+    getArticleById(id) {
+        return this.get(`articles/${id}`);
+    }
+
+    getAllUsers() {
+        return this.get('users');
+    }
 }
 
 NewsAPI = new NewsAPI("https://nicks-nc-news.onrender.com/api")

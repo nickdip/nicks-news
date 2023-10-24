@@ -1,17 +1,15 @@
 
 import React, { useEffect, useState } from 'react'
 import NewsAPI from "../api.js"
-import Article from "./Article"
+import Article from "./ArticleInList.jsx"
 
 export default function AllArticles() {
 
   const [ articles, setArticles ] = useState([])
 
-  console.log("HELLLO")
   useEffect(() => {
      NewsAPI.getAllArticles()
      .then( ( { articles }) => {
-        console.log(articles)
         setArticles(articles)
      })
   }, [])
