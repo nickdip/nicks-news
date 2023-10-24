@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import '../styles/header.css'
 import NewsAPI from '../api.js'
+import UserContext from '../contexts/UserContext.jsx'
 
 export default function Header() {
 
   const [ usersTotal, setUsersTotal ] = useState(0)
+
+  const { user } = useContext(UserContext)
 
   useEffect(() => {
     NewsAPI.getAllUsers()
@@ -18,7 +21,7 @@ export default function Header() {
       <div className="header-title">Nicks News</div>
       <div className="users-joined-text">
       <div>{new Date().toUTCString().slice(0, 17)}</div>
-        <div>Welcome, ExampleUser!</div>
+        <div>Welcome, {user.username}!</div>
         <div>{usersTotal} users</div>
       </div>
       </div>
