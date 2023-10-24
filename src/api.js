@@ -25,6 +25,10 @@ class NewsAPI {
     getAllUsers() {
         return this.get('users');
     }
+
+    getCommentsByArticleId(id) {
+        return this.get(`articles/${id}/comments`);
+    }
 }
 
 NewsAPI = new NewsAPI("https://nicks-nc-news.onrender.com/api")

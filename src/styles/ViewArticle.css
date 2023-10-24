@@ -44,8 +44,8 @@
 
 
 .viewArticle-author {
-    grid-row: 3 / 4;
-    grid-column: 1 / 2;
+    grid-column: 3 / 4;
+    grid-row: 6 / 7;
     justify-self: end;
     font-size: 1rem;
     align-self: center;
@@ -74,8 +74,8 @@
 
 
 .viewArticle-comment {
-    grid-column: 3 / 4;
-    grid-row: 6 / 7;
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
     justify-self: start;
 }
 
