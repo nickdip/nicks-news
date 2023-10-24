@@ -7,8 +7,10 @@ class NewsAPI {
             url: this.url})
     }
 
-    get(endpoint) {
-        return this.api.get(`${this.url}/${endpoint}`).then(({data}) => data)
+    get(endpoint, query) {
+        let path = `${this.url}/${endpoint}`
+        if (query) path += query
+        return this.api.get(path).then(({data}) => data)
         .catch((err) => {
             throw new Error(`Error with API GET Request: ${err}`)
         })
@@ -37,9 +39,35 @@ class NewsAPI {
         return this.get(`articles/${id}/comments`);
     }
 
+    getTopics() {
+        return this.get('topics');
+    }
+
     patchArticleById(id, body) {
         return this.patch(`articles/${id}`, body);
     }
+
+    getArticlesByTopic(topic) {
+        return this.get('articles', `?topic=${topic}`)
+    }
+
+    login(username) {
+        return this.get(`users/${username}`).then(({ user }) => user[0])
+        .catch((err) => {
+            throw new Error(`Error retrieving user: ${err}`)
+        })
+    }
+
+    postComment(id, body) {
+        return this.api.post(`${this.url}/articles/${id}/comments`, body).then(({data}) => data)
+        .catch((err) => {
+            throw new Error(`Error with API POST Request: ${err}`)
+        })
+    }
+
+
+
+
 }
 
 NewsAPI = new NewsAPI("https://nicks-nc-news.onrender.com/api")
