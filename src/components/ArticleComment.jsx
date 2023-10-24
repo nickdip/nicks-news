@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import dateFormat from '../utils/dateFormat.js'
 import timeFormat from '../utils/timeFormat.js'
-import votes from '../utils/votes.js'
+import votesColour from '../utils/votes.js'
 import '../styles/comments.css'
 
 export default function ArticleComment() {
@@ -29,7 +29,7 @@ export default function ArticleComment() {
             <li key={`${comment.comment_id}-date`} className="comments-date">{dateFormat(comment.created_at)}</li>
             <li key={`${comment.comment_id}-time`} className="comments-time">{timeFormat(comment.created_at)} GMT</li>
             <li key={`${comment.comment_id}-body`} className="comments-body">{comment.body}</li>
-            <li key={`${comment.comment_id}-votes`} className="comments-votes">{comment.votes}<img src={votes(comment.votes)} className="comments-votes-img"/></li>
+            <li key={`${comment.comment_id}-votes`} className="comments-votes"><span style={votesColour(comment.votes)}>{comment.votes}</span></li>
             <li key={`${comment.comment_id}-id`} className="comments-id">#{comment.comment_id}</li>
             </ul>
             )
