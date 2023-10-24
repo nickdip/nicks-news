@@ -5,7 +5,6 @@ import bodyPreview from "../utils/bodyPreview"
 import { Link } from 'react-router-dom'
 
 export default function Article({article}) {
-    console.log("HI")
     return (
     <ul key={`${article.article_id}-items`} className="article-list">
         <div className="article-grid">

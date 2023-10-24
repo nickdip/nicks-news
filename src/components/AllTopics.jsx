@@ -1,54 +1,61 @@
 import React, { useEffect, useState } from 'react'
 import NewsAPI from '../api'
 import Article from "./ArticleInList.jsx"
+import '../styles/AllTopics.css'
 
 export default function AllTopics() {
-
-    // NewsAPI.getArticlesByTopic("coding").then(( { articles }) => {
-    //     console.log(articles, "CODINGARTICLES")
-    // })
-
-    const [ articlesByTopic, setArticlesByTopic ] = useState({})
+    const [articlesByTopic, setArticlesByTopic] = useState({});
+    const [allTopics, setAllTopics] = useState({});
 
     useEffect(() => {
-        NewsAPI.getTopics()
-        .then(( { topics }) => {
-            console.log(topics, "TOPICS")
-            topics.forEach(({slug}) => getTopicAPI(slug) )
-        })
-    }, [])
+        const fetchTopicsAndArticles = async () => {
+            try {
+                const { topics }= await NewsAPI.getTopics();
 
-    const getTopicAPI = (topic) => {
-        NewsAPI.getArticlesByTopic(topic)
-        .then(( { articles } ) => {
-            setArticlesByTopic(
-                {
-                ...articlesByTopic, 
-                [topic]: articles
+                const topicsObj = {};
+                for (let topic of topics) {
+                    topicsObj[topic.slug] = topic.description;
                 }
-            )
-        })
-    }
 
-  return (
-    <div>
-        {Object.keys(articlesByTopic).map((topic) => {
-            return (<div className="topic-container" key={topic}>
-                <div className="topic-title">
-                    {topic.slug}
-                </div>
-                <div className="topic-description">
-                    {topic.description}
-                </div>
-                <div className="topic-articles">
-                    {articlesByTopic[topic] ? articlesByTopic[topic].map((article) => {
-                       return (
-                       <Article key={article.id} article={article}></Article>
-                       )
-                       }) : null}
-                </div>
-            </div>)
-        })}
-    </div>
-  )
+                setAllTopics(topicsObj);
+
+                for (let topic of topics) {
+                    const { articles } = await NewsAPI.getArticlesByTopic(topic.slug);
+                    setArticlesByTopic(prev => ({
+                        ...prev,
+                        [topic.slug]: articles
+                    }));
+                }
+            } catch (err) {
+                throw new Error('Error fetching topics and articles:', err);
+            }
+        };
+
+        fetchTopicsAndArticles();
+    }, []);
+
+    return (
+        <div>
+            {Object.keys(articlesByTopic).map((topic) => {
+                return (
+                    <div className="topic-container" key={topic}>
+                        <div className="topics">
+                            <div className="topic-title">{topic}</div>
+                            <div className="topic-description">
+                                {allTopics[topic] ? allTopics[topic] : null}
+                            </div>
+                            <div className="topic-articles">
+                                {articlesByTopic[topic]
+                                    ? articlesByTopic[topic].map((article) => (
+                                        <Article key={article.id} article={article} />
+                                    ))
+                                    : null}
+                            </div>
+                        </div>
+
+                    </div>
+                );
+            })}
+        </div>
+    );
 }
