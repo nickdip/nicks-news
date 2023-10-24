@@ -12,7 +12,6 @@ export default function Header() {
   useEffect(() => {
     NewsAPI.getAllUsers()
     .then( ( { users } ) => {
-      console.log(users, "USERS")
       setUsersTotal(users.length)
     })
   })

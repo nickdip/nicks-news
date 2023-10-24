@@ -3,7 +3,7 @@ import NewsAPI from "../api.js"
 import { useParams } from 'react-router-dom';
 import dateFormat from '../utils/dateFormat.js';
 import votesColour from '../utils/votes.js';
-import '../styles/viewArticle.css'
+import '../styles/ViewArticle.css'
 import ArticleComment from './ArticleComment.jsx'
 import PostComment from './PostComment.jsx'
 import newsAPI from '../api.js';

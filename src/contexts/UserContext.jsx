@@ -5,8 +5,6 @@ const UserContext = createContext(null);
 
 export function UserProvider( {children} ) {
 
-    console.log("HELLO")
-
     const [user, setUser] = useState({});
 
     const loginUser = (username) => {

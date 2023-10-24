@@ -6,6 +6,7 @@ import AllArticles from "./components/AllArticles"
 import ViewArticle from "./components/ViewArticle"
 import Sidebar from "./components/Sidebar"
 import UserContext from './contexts/UserContext'
+import AllTopics from './components/AllTopics'
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
     <Routes>
         <Route path="/all" element={<AllArticles />} />
         <Route path="/articles/:id" element={<ViewArticle />} />
+        <Route path="/alltopics" element={<AllTopics />} />
     </Routes>
     </div>
     <Sidebar></Sidebar>
