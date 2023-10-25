@@ -7,9 +7,13 @@ import '../styles/ViewArticle.css'
 import ArticleComment from './ArticleComment.jsx'
 import PostComment from './PostComment.jsx'
 import newsAPI from '../api.js';
+import useLoading from '../hooks/useLoading';
+import Loading from './Loading.jsx';
 
 
 export default function ViewArticle() {
+
+    const { isLoading, setIsLoading } = useLoading();
 
     const { id } = useParams()
     const [ article, setArticle ] = useState({})
@@ -27,13 +31,17 @@ export default function ViewArticle() {
     }
 
     useEffect(() => {
+        setIsLoading(true)
         NewsAPI.getArticleById(id)
         .then( ( { article } ) => {
             setArticle(article)
             setCurrentVotes(article.votes)
+            setIsLoading(false)
         })
 
     }, [])
+
+    if (isLoading) return <Loading></Loading>
 
     if (article.article_id) return (
     <>

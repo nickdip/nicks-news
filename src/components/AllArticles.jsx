@@ -6,7 +6,6 @@ import { useSearchParams, useLocation, Link } from 'react-router-dom'
 import '../styles/AllArticles.css'
 import useLoading from '../hooks/useLoading'
 import Loading from './Loading'
-import ClipLoader from "react-spinners/ClipLoader";
 
 
 export default function AllArticles() {

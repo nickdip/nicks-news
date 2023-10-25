@@ -85,7 +85,14 @@
     justify-self: end;
 }
 
-.viewArticle-votes-picture {
+.viewArticle-votes-up {
     width: 1.2rem;
     height: auto;
+    align-self: center;
+}
+
+.viewArticle-votes-down {
+    width: 1rem;
+    height: auto;
+    align-self: center;
 }
