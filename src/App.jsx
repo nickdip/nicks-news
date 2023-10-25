@@ -8,7 +8,6 @@ import Sidebar from "./components/Sidebar"
 import UserContext from './contexts/UserContext'
 import AllTopics from './components/AllTopics'
 
-//TODO: Sort out loading states
 //TODO: Add alt text to images
 
 

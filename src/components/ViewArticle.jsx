@@ -21,6 +21,8 @@ export default function ViewArticle() {
     const [ currentVotes, setCurrentVotes ] = useState(0)
     const [ hasVoted, setHasVoted ] = useState(false)
 
+    const [ postComment, setPostComment ] = useState(false)
+
     const handleVote = (vote) => { 
         if (hasVoted) return
         newsAPI.patchArticleById(id, { inc_votes: vote })
@@ -41,7 +43,11 @@ export default function ViewArticle() {
 
     }, [])
 
+    console.log(1)
+
     if (isLoading) return <Loading></Loading>
+
+    console.log(2)
 
     if (article.article_id) return (
     <>
@@ -63,12 +69,11 @@ export default function ViewArticle() {
     </div>
     <div className="show-comments">
         <div id="comments">
-            <PostComment></PostComment>
+            <PostComment postComment={postComment} setPostComment={setPostComment}></PostComment>
             <h2>Show Comments</h2>
-            <ArticleComment></ArticleComment>
+            <ArticleComment postComment={postComment}></ArticleComment>
         </div>
     </div>
     </>
   )
-  else return <div>Loading...</div>
 }

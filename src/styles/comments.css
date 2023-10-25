@@ -43,6 +43,16 @@
     padding-top: 0rem;
 }
 
+.comments-delete-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+    
+}
+
 .comments-votes {
     grid-column: 1 / 2;
     grid-row: 3 / 4;
@@ -56,6 +66,24 @@
     grid-row: 3 / 4;
     width: 1.2rem;
     height: auto;
+}
+
+.comments-delete {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+
+}
+
+.comment-deleted {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    color: red;
+    font-size: 1rem;
+
+}
+
+.comments-delete-icon {
+    width: 1rem;
 }
 
 .comments-id {
