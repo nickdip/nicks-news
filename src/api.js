@@ -10,6 +10,7 @@ class NewsAPI {
     get(endpoint, query) {
         let path = `${this.url}/${endpoint}`
         if (query) path += query
+        console.log(path, "PATH")
         return this.api.get(path).then(({data}) => data)
         .catch((err) => {
             throw new Error(`Error with API GET Request: ${err}`)
@@ -23,8 +24,8 @@ class NewsAPI {
         })
     }
 
-    getAllArticles() {
-        return this.get('articles');
+    getAllArticles(query) {
+        return this.get('articles', query);
     }
 
     getArticleById(id) {

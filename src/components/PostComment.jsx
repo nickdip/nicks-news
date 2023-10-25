@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import UserContext from '../contexts/UserContext'
 import NewsAPI from '../api.js'
-import { set } from 'husky'
 
 export default function PostComment() {
 
@@ -40,7 +39,6 @@ export default function PostComment() {
             setMessageUnderComment('Please enter a comment')
             return
         }
-        console.log("HELLLO")
         setBlockNewComment(true)
         NewsAPI.postComment(id, { username: user.username, body: formInput })
         .then(() => {
