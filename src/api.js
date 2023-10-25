@@ -24,6 +24,13 @@ class NewsAPI {
         })
     }
 
+    delete(endpoint) {
+        return this.api.delete(`${this.url}/${endpoint}`)
+        .catch((err) => {
+            throw new Error(`Error with API DELETE Request: ${err}`)
+        })
+    }
+
     getAllArticles(query) {
         return this.get('articles', query);
     }
@@ -66,6 +73,10 @@ class NewsAPI {
         })
     }
 
+
+    deleteComment(id) {
+        return this.delete(`comments/${id}`)
+    }
 
 
 

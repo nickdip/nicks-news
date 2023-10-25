@@ -4,8 +4,8 @@ import React, { useState} from 'react'
 import useLoading from '../hooks/useLoading'
 import '../styles/Loading.css'
   
-export default function Loading() {  
-    const { isLoading } = useLoading();
+export default function Loading({childLoading}) {  
+    const { isLoading} = useLoading();
 
     return (
       <div className="loading">
@@ -13,7 +13,7 @@ export default function Loading() {
         <ClipLoader
           size={150}
           color={"#123abc"}
-          loading={isLoading}
+          loading={isLoading || childLoading}
         />
       </div>
     );
