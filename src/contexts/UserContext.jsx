@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react';
-import NewsAPI from '../api'
+import NewsAPI from '../api/newsReaderAPI'
 
 const UserContext = createContext(null);
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState} from 'react'
-import NewsAPI from "../api.js"
+import NewsAPI from "../api/newsReaderAPI.js"
 import Article from "./ArticleInList.jsx"
 import { useSearchParams, useLocation, Link } from 'react-router-dom'
 import '../styles/AllArticles.css'
@@ -25,7 +25,6 @@ export default function AllArticles() {
 
   const updateSearchParams = (params) => {
     const newParams = { ...searchParams, ...params }
-    console.log(newParams)
     setSearchParams(newParams)
   }
 
@@ -65,7 +64,7 @@ export default function AllArticles() {
           </select>
           <button type="button" onClick={() => {updateSearchParams({sort_by: sortBy})}}>Sort</button>
         </form>
-        <Link class="order-pic-text" onClick={() => {
+        <Link className="order-pic-text" onClick={() => {
           setIsAscending(!isAscending)
           updateSearchParams({ order: returnOrder() })} }to={`/all?order=${returnOrder()}`}>
             <img src="../src/static/up-down-sort.png" className="order-arrows-pic" alt="up and down arrows to change whether order is ascending or descending"/>
@@ -75,7 +74,7 @@ export default function AllArticles() {
       <ul className="articles-list">
       {articles.map((article) => {
         return (<li key={`${article.article_id}-items`} className="article-li">
-        <Article article={article}></Article>
+        <Article article={article} imageSize={"normal"}></Article>
         </li>)})}
       </ul>
     </div>

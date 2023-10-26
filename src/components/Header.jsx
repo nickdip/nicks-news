@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react'
 import '../styles/header.css'
-import NewsAPI from '../api.js'
+import NewsAPI from "../api/newsReaderAPI.js"
 import UserContext from '../contexts/UserContext.jsx'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
 
@@ -17,7 +18,7 @@ export default function Header() {
   })
   return (
     <div className="header">
-      <div className="header-title">Nicks News</div>
+      <div className="header-title"><Link to="/">Nicks News</Link></div>
       <div className="users-joined-text">
       <div>{new Date().toUTCString().slice(0, 17)}</div>
         <div>Welcome, {user.username}!</div>

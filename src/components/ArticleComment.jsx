@@ -1,5 +1,5 @@
 import React from 'react'
-import NewsApi from '../api.js'
+import NewsApi from "../api/newsReaderAPI.js"
 import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import dateFormat from '../utils/dateFormat.js'
@@ -13,7 +13,6 @@ import sleep from '../utils/sleep.js'
 
 export default function ArticleComment({postComment}) {
 
-    console.log(postComment, "POST COMMENT")
 
     const [ commentLoading, setCommentLoading ] = useState(false)
 
@@ -69,19 +68,16 @@ export default function ArticleComment({postComment}) {
 
     }
 
-    console.log(3)
-
 
     if (commentLoading) return <Loading childLoading={commentLoading}></Loading>
 
-    console.log(4)
 
   return (
     <div>
         {comments.map( (comment) => {
             return (
             <ul key={`${comment.comment_id}-ul`} className="comments-Grid">
-            <li key={`${comment.comment_id}-delete`} className="comment-delete-message">
+            <li key={`${comment.comment_id}-delete-message`} className="comment-delete-message">
             {commentDeleted.id === comment.comment_id ? displayDeleteMessage() : null}
             </li>
             <li key={`${comment.comment_id}-author`} className="comments-author">{comment.author}</li>
@@ -94,7 +90,7 @@ export default function ArticleComment({postComment}) {
                     <button onClick={() => deleteComment(comment.comment_id)} className="comments-delete-button">
                         <img src="../src/static/x-delete-comment.png" alt="hyperlink image to delete a comment" className="comments-delete-icon"/>
                     </button>
-                    </li> : null}
+                </li> : null}
             <li key={`${comment.comment_id}-id`} className="comments-id">#{comment.comment_id}</li>
             </ul>
             )

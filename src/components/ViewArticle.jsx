@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import NewsAPI from "../api.js"
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react'
+import NewsAPI from "../api/newsReaderAPI.js"
+import { useParams, useLocation } from 'react-router-dom';
 import dateFormat from '../utils/dateFormat.js';
 import votesColour from '../utils/votes.js';
 import '../styles/ViewArticle.css'
 import ArticleComment from './ArticleComment.jsx'
 import PostComment from './PostComment.jsx'
-import newsAPI from '../api.js';
+import newsAPI from "../api/newsReaderAPI.js"
 import useLoading from '../hooks/useLoading';
 import Loading from './Loading.jsx';
+import ArticleError from '../components/Errors/ArticleError.jsx'
+import BadRequestError from '../components/Errors/BadRequestError.jsx'
 
 
 export default function ViewArticle() {
@@ -23,6 +25,15 @@ export default function ViewArticle() {
 
     const [ postComment, setPostComment ] = useState(false)
 
+    const [ article404Error, setArticle404Error ] = useState(false)  
+    const [ article400Error, setArticle400Error ] = useState(false)
+
+    const commentsRef = useRef(null)
+
+    console.log(commentsRef, "commentsRef")
+
+    const location = useLocation()
+
     const handleVote = (vote) => { 
         if (hasVoted) return
         newsAPI.patchArticleById(id, { inc_votes: vote })
@@ -32,22 +43,40 @@ export default function ViewArticle() {
 
     }
 
-    useEffect(() => {
+    useEffect( () => {
         setIsLoading(true)
-        NewsAPI.getArticleById(id)
-        .then( ( { article } ) => {
-            setArticle(article)
-            setCurrentVotes(article.votes)
-            setIsLoading(false)
-        })
-
+        getArticleById(id)
     }, [])
 
-    console.log(1)
+    useEffect(() => {
+        if (location.hash === "#comments" && commentsRef.current) {
+
+            commentsRef.current.scrollIntoView({ behavior: "smooth" })
+        }
+    }, [article])
+
+    const getArticleById = async (id) => {
+        try {
+        const { article } = await NewsAPI.getArticleById(id)
+        setArticle(article)
+        setCurrentVotes(article.votes)
+        }
+        catch (err) {
+            console.log(err.response.status, "err.response.status")
+            if (err.response.status === 404) setArticle404Error(true)
+            if (err.response.status === 400) setArticle400Error(true)
+        }
+        setIsLoading(false)
+    }
+        
+
+
 
     if (isLoading) return <Loading></Loading>
+    if (article400Error) return <ArticleError></ArticleError>
+    if (article404Error) return <BadRequestError></BadRequestError>
 
-    console.log(2)
+
 
     if (article.article_id) return (
     <>
@@ -68,7 +97,7 @@ export default function ViewArticle() {
         <div className="viewArticle-comment"><a href="#comments">Comments ({article.comment_count})</a></div>
     </div>
     <div className="show-comments">
-        <div id="comments">
+        <div ref={commentsRef} id="comments">
             <PostComment postComment={postComment} setPostComment={setPostComment}></PostComment>
             <h2>Show Comments</h2>
             <ArticleComment postComment={postComment}></ArticleComment>

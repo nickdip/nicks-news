@@ -1,38 +1,65 @@
 import React, { useEffect, useState } from 'react'
-import NewsAPI from '../api'
+import NewsAPI from "../api/newsReaderAPI.js"
 import Article from "./ArticleInList.jsx"
 import '../styles/AllTopics.css'
+import useLoading from '../hooks/useLoading'
+import Loading from './Loading'
+import ArticleError from './Errors/ArticleError.jsx'
+import TopicError from './Errors/TopicError.jsx'
+import BadRequestError from './Errors/BadRequestError.jsx'
 
 export default function AllTopics() {
-    const [articlesByTopic, setArticlesByTopic] = useState({});
-    const [allTopics, setAllTopics] = useState({});
+    const [articlesByTopic, setArticlesByTopic] = useState({})
+    const [allTopics, setAllTopics] = useState({})
+    const { isLoading, setIsLoading } = useLoading();
+    const [ articleError, setArticleError ] = useState(false)
+    const [ topicError, setTopicError ] = useState(false)
+    const [ Error400, setError400 ] = useState(false)
+
+    const fetchTopicsAndArticles = async () => {
+        setIsLoading(true)
+        let foundTopics
+        try {
+            let { topics } = await NewsAPI.getTopics();
+            foundTopics = topics
+            const topicsObj = {};
+            for (let topic of topics) {
+                topicsObj[topic.slug] = topic.description;
+            }
+
+            setAllTopics(topicsObj);
+
+        } catch (err) {
+            if (err.response.status === 400) setError400(true)
+            else if (err.response.status === 404) setArticleError(true)
+        }
+
+        try {
+            for (let topic of foundTopics) {
+                const { articles } = await NewsAPI.getArticlesByTopic(topic.slug);
+                setArticlesByTopic(prev => ({
+                    ...prev,
+                    [topic.slug]: articles
+                }));
+            }
+        } catch (err) {
+            console.log(err, "err")
+            if (err.response.status === 400) setError400(true)
+            else if (err.response.status === 404) setTopicError(true)
+        }
+
+        setIsLoading(false)
+    };
 
     useEffect(() => {
-        const fetchTopicsAndArticles = async () => {
-            try {
-                const { topics }= await NewsAPI.getTopics();
-
-                const topicsObj = {};
-                for (let topic of topics) {
-                    topicsObj[topic.slug] = topic.description;
-                }
-
-                setAllTopics(topicsObj);
-
-                for (let topic of topics) {
-                    const { articles } = await NewsAPI.getArticlesByTopic(topic.slug);
-                    setArticlesByTopic(prev => ({
-                        ...prev,
-                        [topic.slug]: articles
-                    }));
-                }
-            } catch (err) {
-                throw new Error('Error fetching topics and articles:', err);
-            }
-        };
-
         fetchTopicsAndArticles();
     }, []);
+
+    if (isLoading) return <Loading></Loading>
+    if (Error400) return <BadRequestError></BadRequestError>
+    if (articleError) return <ArticleError></ArticleError>  
+    if (topicError) return <TopicError></TopicError>
+
 
     return (
         <div>

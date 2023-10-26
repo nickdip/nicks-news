@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import UserContext from '../contexts/UserContext'
-import NewsAPI from '../api.js'
+import NewsAPI from "../api/newsReaderAPI.js"
 import sleep from '../utils/sleep.js'
 
 export default function PostComment({postComment, setPostComment}) {
