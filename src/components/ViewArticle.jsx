@@ -30,8 +30,6 @@ export default function ViewArticle() {
 
     const commentsRef = useRef(null)
 
-    console.log(commentsRef, "commentsRef")
-
     const location = useLocation()
 
     const handleVote = (vote) => { 
@@ -62,6 +60,7 @@ export default function ViewArticle() {
         setCurrentVotes(article.votes)
         }
         catch (err) {
+            console.log(err, "ERRRR")
             console.log(err.response.status, "err.response.status")
             if (err.response.status === 404) setArticle404Error(true)
             if (err.response.status === 400) setArticle400Error(true)

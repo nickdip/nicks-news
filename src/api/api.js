@@ -12,21 +12,24 @@ class api {
         if (query) path += query
         return this.api.get(path).then(({data}) => data)
         .catch((err) => {
-            throw new Error(`Error with API GET Request: ${err}`)
+            console.log(`Error with API GET Request: ${err}`)
+            return err
         })
     }
 
     patch(endpoint, body) {
         return this.api.patch(`${this.url}/${endpoint}`, body).then(({data}) => data)
         .catch((err) => {
-            throw new Error(`Error with API PATCH Request: ${err}`)
+            console.log(`Error with API PATCH Request: ${err}`)
+            return err
         })
     }
 
     delete(endpoint) {
         return this.api.delete(`${this.url}/${endpoint}`)
         .catch((err) => {
-            throw new Error(`Error with API DELETE Request: ${err}`)
+           console.log(`Error with API DELETE Request: ${err}`)
+           return err
         })
     }
 
