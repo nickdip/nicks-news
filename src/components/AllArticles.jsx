@@ -6,6 +6,7 @@ import { useSearchParams, useLocation, Link } from 'react-router-dom'
 import '../styles/AllArticles.css'
 import useLoading from '../hooks/useLoading'
 import Loading from './Loading'
+import TopicError from './Errors/TopicError.jsx'
 
 
 export default function AllArticles() {
@@ -14,9 +15,17 @@ export default function AllArticles() {
 
   const [ articles, setArticles ] = useState([])
 
-  const [ searchParams, setSearchParams ] = useSearchParams("")
+  const [ searchParams, setSearchParams ] = useSearchParams()
+
+  const [ topicError, setTopicError ] = useState(false) 
+
+  const location = useLocation()
+
+  const [ topicQuery, setTopicQuery ] = useState(location.pathname.split("/")[2])
+
 
   let order = searchParams.get("order")
+
 
   const [ isAscending, setIsAscending ] = order ? useState(order === "asc") : useState(true)
 
@@ -36,20 +45,27 @@ export default function AllArticles() {
     return isAscending ? "Lowest - Highest" : "Highest - Lowest "
   }
 
-
-  const location = useLocation()
+  console.log(location.search)
 
 
   useEffect(() => {
     setIsLoading(true)
-     NewsAPI.getAllArticles(location.search)
+     let searchQuery = location.search
+     if (topicQuery) {
+       searchQuery = `?topic=${topicQuery}&` + searchQuery
+     }
+     NewsAPI.getAllArticles(searchQuery)
      .then( ( { articles }) => {
+        if (topicQuery && articles.length === 0) {
+          setTopicError(true)
+        }
         setArticles(articles)
         setIsLoading(false)
      })
   }, [searchParams])
 
   if (isLoading) return <Loading></Loading>
+  if (topicError) return <TopicError></TopicError>
 
   return (
     <div>

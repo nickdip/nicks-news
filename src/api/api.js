@@ -13,7 +13,7 @@ class api {
         return this.api.get(path).then(({data}) => data)
         .catch((err) => {
             console.log(`Error with API GET Request: ${err}`)
-            return err
+            return Promise.reject(err.response.status)
         })
     }
 
@@ -21,7 +21,7 @@ class api {
         return this.api.patch(`${this.url}/${endpoint}`, body).then(({data}) => data)
         .catch((err) => {
             console.log(`Error with API PATCH Request: ${err}`)
-            return err
+            return Promise.reject(err.response.status)
         })
     }
 
@@ -29,7 +29,8 @@ class api {
         return this.api.delete(`${this.url}/${endpoint}`)
         .catch((err) => {
            console.log(`Error with API DELETE Request: ${err}`)
-           return err
+        
+           return Promise.reject(err.response.status)
         })
     }
 

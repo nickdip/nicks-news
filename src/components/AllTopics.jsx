@@ -16,26 +16,30 @@ export default function AllTopics() {
     const [ topicError, setTopicError ] = useState(false)
     const [ Error400, setError400 ] = useState(false)
 
-    const fetchTopicsAndArticles = async () => {
-        setIsLoading(true)
-        let foundTopics
+    console.log(location, "location")
+
+    const topicQuery = location.pathname.split("/")[2]
+
+    const fetchTopics = async () => {
         try {
             let { topics } = await NewsAPI.getTopics();
-            foundTopics = topics
             const topicsObj = {};
             for (let topic of topics) {
                 topicsObj[topic.slug] = topic.description;
             }
 
-            setAllTopics(topicsObj);
+            setAllTopics(topicsObj)
+            return topics
 
         } catch (err) {
-            if (err.response.status === 400) setError400(true)
-            else if (err.response.status === 404) setArticleError(true)
+            if (err === 400) setError400(true)
+            else if (err === 404) setArticleError(true)
+            return null
         }
-
+    }
+    const fetchArticles = async (topics) =>{
         try {
-            for (let topic of foundTopics) {
+            for (let topic of topics) {
                 const { articles } = await NewsAPI.getArticlesByTopic(topic.slug);
                 setArticlesByTopic(prev => ({
                     ...prev,
@@ -43,16 +47,44 @@ export default function AllTopics() {
                 }));
             }
         } catch (err) {
-            console.log(err, "err")
-            if (err.response.status === 400) setError400(true)
-            else if (err.response.status === 404) setTopicError(true)
+            if (err === 400) setError400(true)
+            else if (err === 404) setTopicError(true)
+            return null
         }
 
         setIsLoading(false)
-    };
+    }
+
+    const fetchArticlesByTopic = async (topic) => {
+        try {
+            const { articles } = await NewsAPI.getArticlesByTopic(topic)
+
+            console.log(articles, "articles")
+            setArticlesByTopic(prev => ({
+                ...prev,
+                [topic]: articles
+            }));
+        } catch (err) {
+            if (err === 400) setError400(true)
+            else if (err === 404) setTopicError(true)
+            return null
+        }
+        setIsLoading(false)
+    }
+
+    const allFetching = async () => {
+        if (topicQuery) await fetchArticlesByTopic(topicQuery)
+        else {
+            let topics = await fetchTopics()
+            console.log(topics, "topics")   
+            if (topics) await fetchArticles(topics)
+        }
+    }
+
 
     useEffect(() => {
-        fetchTopicsAndArticles();
+        setIsLoading(true)
+        allFetching()
     }, []);
 
     if (isLoading) return <Loading></Loading>

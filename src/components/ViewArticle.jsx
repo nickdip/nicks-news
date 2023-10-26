@@ -56,14 +56,14 @@ export default function ViewArticle() {
     const getArticleById = async (id) => {
         try {
         const { article } = await NewsAPI.getArticleById(id)
+        console.log(article, "<< article")
         setArticle(article)
         setCurrentVotes(article.votes)
         }
         catch (err) {
-            console.log(err, "ERRRR")
-            console.log(err.response.status, "err.response.status")
-            if (err.response.status === 404) setArticle404Error(true)
-            if (err.response.status === 400) setArticle400Error(true)
+            console.log(err, "<< err")
+            if (err === 404) setArticle404Error(true)
+            if (err === 400) setArticle400Error(true)
         }
         setIsLoading(false)
     }
@@ -72,8 +72,8 @@ export default function ViewArticle() {
 
 
     if (isLoading) return <Loading></Loading>
-    if (article400Error) return <ArticleError></ArticleError>
-    if (article404Error) return <BadRequestError></BadRequestError>
+    if (article400Error) return <BadRequestError></BadRequestError>
+    if (article404Error) return <ArticleError></ArticleError>
 
 
 

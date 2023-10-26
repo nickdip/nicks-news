@@ -37,7 +37,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<AllArticles />} />
         <Route path="/articles/:id" element={<ViewArticle />} />
-        <Route path="/alltopics" element={<AllTopics />} />
+        <Route path="/topics" element={<AllTopics />} />
+        <Route path="/topics/:topic" element={<AllArticles/>} />
         <Route path="/*" element={<PathErrors></PathErrors>} />
     </Routes>
     </div>
