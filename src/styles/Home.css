@@ -1,0 +1,50 @@
+
+
+.home-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    overflow-x: hidden;
+}
+
+.home-main-article {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-small-articles-flex {
+    display: flex;
+    margin-left: 80vw;
+    overflow-x: auto;
+    overflow-y: auto;
+    overflow: scroll;
+    white-space: nowrap;
+    -ms-overflow-style: scrollbar; /* IE and Edge */
+    scrollbar-width: thin; /* for Firefox */
+    border: 1px solid black;
+    padding-bottom: 0;
+}
+
+.home-small-articles-flex::-webkit-scrollbar {
+    height: 1rem;
+    background-color: rgb(0, 17, 70);
+    border: 1px solid rgb(77, 74, 74);
+    width: 2px;
+}
+
+.home-small-articles-flex::-webkit-scrollbar-thumb {
+    background-color: rgb(62, 74, 112);
+    border: 1px solid rgb(77, 74, 74);
+}
+
+.home-small-article {
+    display: inline-block;
+    margin-right: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 0;
+    margin-left: 1rem;
+    border-right: 1px solid black;
+}

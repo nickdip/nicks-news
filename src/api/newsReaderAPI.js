@@ -1,36 +1,9 @@
-import axios from 'axios';
+import api from './api'
 
-class NewsAPI {
+class NicksNews extends api{
     constructor(URL) {
-        this.url = URL;
-        this.api = axios.create({
-            url: this.url})
+        super(URL)
     }
-
-    get(endpoint, query) {
-        let path = `${this.url}/${endpoint}`
-        if (query) path += query
-        console.log(path, "PATH")
-        return this.api.get(path).then(({data}) => data)
-        .catch((err) => {
-            throw new Error(`Error with API GET Request: ${err}`)
-        })
-    }
-
-    patch(endpoint, body) {
-        return this.api.patch(`${this.url}/${endpoint}`, body).then(({data}) => data)
-        .catch((err) => {
-            throw new Error(`Error with API PATCH Request: ${err}`)
-        })
-    }
-
-    delete(endpoint) {
-        return this.api.delete(`${this.url}/${endpoint}`)
-        .catch((err) => {
-            throw new Error(`Error with API DELETE Request: ${err}`)
-        })
-    }
-
     getAllArticles(query) {
         return this.get('articles', query);
     }
@@ -77,11 +50,9 @@ class NewsAPI {
     deleteComment(id) {
         return this.delete(`comments/${id}`)
     }
-
-
-
+    
 }
 
-NewsAPI = new NewsAPI("https://nicks-nc-news.onrender.com/api")
+const NewsAPI = new NicksNews("https://nicks-nc-news.onrender.com/api")
 
 export default NewsAPI

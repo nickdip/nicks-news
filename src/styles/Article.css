@@ -49,9 +49,24 @@
     justify-content: center;
 }
 
-.article-list-img-size {
+.article-list-img-normal {
     width: 80vw;
     max-height: 30vh;
+    object-fit: contain;
+    align-content: center;
+}
+
+
+.article-list-img-small{
+    width: 40vw;
+    max-height: 20vh;
+    object-fit: contain;
+    align-content: center;
+}
+
+.article-list-img-xsmall{
+    width: 40vw;
+    max-height: 20vh;
     object-fit: contain;
     align-content: center;
 }
