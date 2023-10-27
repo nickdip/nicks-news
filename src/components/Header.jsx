@@ -15,10 +15,10 @@ export default function Header() {
     .then( ( { users } ) => {
       setUsersTotal(users.length)
     })
-  })
+  }, [])
   return (
     <div className="header">
-      <div className="header-title"><Link to="/">Nicks News</Link></div>
+      <div className="header-title"><Link to="/" className="header-title-link">Nicks News</Link></div>
       <div className="users-joined-text">
       <div>{new Date().toUTCString().slice(0, 17)}</div>
         <div>Welcome, {user.username}!</div>

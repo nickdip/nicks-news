@@ -80,8 +80,10 @@ export default function ViewArticle() {
     if (article.article_id) return (
     <>
     <div className="viewArticleGrid">
-        <div className="viewArticle-id">#{article.article_id}</div>
-        <div className="viewArticle-topic">{article.topic}</div>
+        <div className="viewArticle-toprow-id-topic">
+            <div className="viewArticle-id">#{article.article_id}</div>
+            <div className="viewArticle-topic">{article.topic}</div>
+        </div>
         <h1 className="viewArticle-title">{article.title}</h1>
         <div className="viewArticle-date">{dateFormat(article.created_at)}</div>
         <div className="viewArticle-author">{article.author}</div>

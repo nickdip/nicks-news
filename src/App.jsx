@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import './App.css'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import Header from "./components/Header"
 import AllArticles from "./components/AllArticles"
 import ViewArticle from "./components/ViewArticle"
@@ -12,10 +12,10 @@ import PathErrors from './components/Errors/PathErrors'
 
 
 //TODO: Add alt text to images
+//TODO: Fix Nicks News crashing when on other pages
 //TODO: Improve user experience of loading spinner (don't include filters)
 //TODO: Fix error handling of loading spinner
-//TODO: Fix crappy CSS
-
+//TODO: Fix scroll
 
 export default function App() {
 
@@ -26,15 +26,15 @@ export default function App() {
   useEffect(() => {
     `Login an example user for testing purposes`
     loginUser("tickle122")
-
   }, [])
+
 
   return (
     <>
     <Header></Header>
     <div className="main">
     <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/articles" element={<AllArticles />} />
         <Route path="/articles/:id" element={<ViewArticle />} />
         <Route path="/topics" element={<AllTopics />} />

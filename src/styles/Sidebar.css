@@ -1,9 +1,13 @@
 .all-articles-link {
     color: white;
+    padding: 0.2rem;
+    font-size: 1.3rem;
 }
 
 .all-topics-link {
     color: white;
+    padding: 0.2rem;
+    font-size: 1.3rem;
 }
 
 .sidebar {

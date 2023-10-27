@@ -4,26 +4,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    overflow-x: hidden;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .home-main-article {
-    display: flex;
+    position:fixed;
     flex-direction: column;
+    margin-top: 2vh;
 }
 
 .home-small-articles-flex {
     display: flex;
     margin-left: 80vw;
-    overflow-x: auto;
-    overflow-y: auto;
-    overflow: scroll;
-    white-space: nowrap;
-    -ms-overflow-style: scrollbar; /* IE and Edge */
-    scrollbar-width: thin; /* for Firefox */
-    border: 1px solid black;
-    padding-bottom: 0;
 }
 
 .home-small-articles-flex::-webkit-scrollbar {
@@ -46,5 +39,16 @@
     padding-top: 2rem;
     padding-bottom: 0;
     margin-left: 1rem;
-    border-right: 1px solid black;
+}
+
+.home-small-flow {
+    padding-top: 30vh;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: none;
+    overflow: scroll;
+    white-space: nowrap;
+    -ms-overflow-style: scrollbar; /* IE and Edge */
+    scrollbar-width: thin; /* for Firefox */
+    padding-bottom: 0;
 }

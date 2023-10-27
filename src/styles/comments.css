@@ -22,8 +22,9 @@
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     font-size: 1rem;
-    align-self: end;
     padding-bottom: 1rem;
+    align-self: end;
+    justify-self: end;
 }
 
 .comments-time {
@@ -32,6 +33,7 @@
     font-size: 1rem;
     align-self: end;
     padding-top: 0rem;
+    justify-self: end;
 }
 
 .comments-body {
@@ -71,6 +73,8 @@
 .comments-delete {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
+    justify-self: end;
+    margin-right: 3rem;
 
 }
 
