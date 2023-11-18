@@ -3,6 +3,11 @@ body {
   background-color: rgb(255, 253, 253);
 }
 
+
+li {
+  display: inherit;
+}
+
 #root {
   margin: 0 auto;
   padding: 0rem;

@@ -5,10 +5,12 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './contexts/UserContext.jsx'
 import LoadingProvider from './contexts/LoadingContext.jsx'
+import { CookiesProvider } from 'react-cookie'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+  <CookiesProvider defaultSetOptions={{ path: '/' }}>
   <UserProvider>
   <LoadingProvider>
   <BrowserRouter>
@@ -16,5 +18,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </BrowserRouter>
   </LoadingProvider>
   </UserProvider>
+  </CookiesProvider>
   </React.StrictMode>
 )

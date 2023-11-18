@@ -14,7 +14,12 @@ export default function Article({article, imageSize}) {
         <li key={`${article.article_id}-date`} className="article-list-date">{dateFormat(article.created_at)}</li>
         <li key={`${article.article_id}-img`} className="article-list-img"><img src={`${article.article_img_url}`} className={`article-list-img-${imageSize}`} alt={`A picture of article with title: ${article.title}`}/></li>
         <li key={`${article.article_id}-comment`} className="article-list-comment"><Link to={`/articles/${article.article_id}#comments`}>Comments ({article.comment_count})</Link></li>
-        <li key={`${article.article_id}-votes`} className="article-list-votes">{article.votes}<img src="../src/static/up.png" className="votes-picture"/></li>
+        <li key={`${article.article_id}-votes`} className="article-list-votes">
+            <div className="votes-pic-text">
+                {article.votes}
+                <img src="../src/static/up.png" className="votes-picture"/>
+            </div>
+            </li>
         </div>
     </ul>
     )
