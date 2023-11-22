@@ -7,8 +7,18 @@
     grid-template-rows: repeat(3, auto);
     border: 0.2rem solid black;
     margin: 1rem;
-    padding: 0.2rem;
+    padding: 0.6vh 0.6vw 0.6vh 0.6vw;
+    margin-left: 12vw;
+    margin-right: 12vw;
 }
+
+@media (max-width: 600px) {
+    .comments-Grid {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+    
 
 .comments-author {
     grid-column: 1 / 2;

@@ -1,20 +1,13 @@
 
-
 .home-flex {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    overflow: auto;
-    white-space: nowrap;
     margin-top: 5vh;
 }
 
 .home-main-article {
-    flex-direction: column;
+
 }
 
-.home-small-articles-flex {
-    display: flex;
-    margin-left: 80vw;
+.home-small-articles {
 }
 

@@ -30,6 +30,12 @@ li {
 
 .main {
   padding-top: 8.2vh;
-  padding-left: 19vw;
+  padding-left: 14vw;
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding-left: 20vw;
+  }
 }
 

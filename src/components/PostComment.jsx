@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import UserContext from '../contexts/UserContext'
 import NewsAPI from "../api/newsReaderAPI.js"
 import sleep from '../utils/sleep.js'
+import '../styles/PostComment.css'
 
 export default function PostComment({postComment, setPostComment}) {
 
@@ -69,9 +70,9 @@ export default function PostComment({postComment, setPostComment}) {
 
   return (
     <div>
-        <form>    
-            <input placeholder="Leave a comment here" onChange={handleChange} value={formInput}></input>
-            <button type="button" disabled={blockNewComment} onClick={(e) => handleSubmit(e)}>Post!</button>
+        <form className="post-form">    
+            <textarea name="write-comment" rows="4" cols="50" className="comment-box" placeholder="Leave a comment here" onChange={handleChange} value={formInput}></textarea>
+            <button className="post-comment" type="button" disabled={blockNewComment} onClick={(e) => handleSubmit(e)}>Post!</button>
             <div>{messageUnderComment}</div>
         </form>
     </div>

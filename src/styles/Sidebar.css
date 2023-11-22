@@ -2,7 +2,9 @@
     color: white;
     padding: 0.2rem;
     font-size: 1.3rem;
+
 }
+
 
 .all-topics-link {
     color: white;
@@ -15,16 +17,31 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 19vw;
+    width: 10%;
     background-color: rgb(0, 17, 70);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 0;
     transition: all 0.3s ease-in-out;
 }
 
+@media (max-width: 600px) {
+    .sidebar {
+        width: 13%
+    }
+}
+
 .sidebar-list {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
     margin-top: 20vh;
+}
+
+@media (max-width: 400px) {
+    .all-articles-link {
+        margin-left: 0px
+    
+    }
 }

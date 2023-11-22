@@ -2,8 +2,21 @@
 
 .login-form{
     margin-top: 10vh;
+
 }
 
 .login-text:visited {
     color: white;
+}
+
+.login-username {
+    margin: 2vh;
+}
+
+.login-password {
+    margin: 2vh;
+}
+
+.login-submit {
+    margin: 2vh
 }

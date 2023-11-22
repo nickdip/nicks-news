@@ -22,13 +22,13 @@ export default function Login() {
     }
 
   return (
-    <div className="login-form">
-        <form onSubmit={handleSubmit}>
+    <div>
+        <form onSubmit={handleSubmit} className="login-form">
             <label htmlFor="username">Username:</label>
-            <input type="text" id="username" name="username" value={usernameInput} onChange={handleChange}></input>
+            <input className="login-username" type="text" id="username" name="username" value={usernameInput} onChange={handleChange}></input>
             <label HTMLFor="password">Password:</label>
-            <input type="password" id="password" name="password"></input>
-            <button type="submit" className="login-text">Log in!</button>   
+            <input className="login-password" type="password" id="password" name="password"></input>
+            <button className="login-submit"  type="submit">Log in!</button>   
         </form>
     </div>
   )

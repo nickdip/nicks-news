@@ -7,17 +7,25 @@
       position: fixed;
       width: 100%;
       margin: 0px;
-      height: 9.9vh;
+      height: 8vh;
       z-index: 10;
     }
     
     .header-title {
-      font-size: 2em;
+      font-size: 1.6rem;
       margin-right: 0;
       margin-left: 0.3em;
       color: white;
       text-decoration: none;
       padding: 0.5rem;
+    }
+
+    .header-title-link {
+       color: white;
+    }
+
+    .header-login-link:visited {
+      color: white;
     }
 
 
