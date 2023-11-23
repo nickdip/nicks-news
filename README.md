@@ -1,8 +1,27 @@
-# React + Vite
+# Nicks News 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend repository for Nicks News. This frontend project is built using React, while the backend uses Node.js, Express and PSQL.
 
-Currently, two official plugins are available:
+Link to backend: https://github.com/nickdip/nc-news
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Installation
+
+1. Clone the frontend repo:
+   ```bash
+   git clone https://github.com/nickdip/nicks-news.git
+
+2. Install dependencies:
+   ```bash
+   npm i
+
+2. Host the app locally:
+   ```bash
+   npm run dev
+
+
+### Test Account
+
+To test features such as upvoting and commenting, you can use the following test account:
+
+Username: `tickle122`
+Password: (No password required)
