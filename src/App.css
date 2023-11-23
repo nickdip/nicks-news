@@ -1,6 +1,22 @@
 body {
   margin: 0;
   background-color: rgb(255, 253, 253);
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(45, 45, 45);
+}
+
+a:hover {
+  color: white;
+  background-color: rgb(0, 17, 70);
+  border-radius: 0.5rem;
+}
+
+a:visited {
+  text-decoration: none;
 }
 
 
@@ -12,6 +28,10 @@ li {
   margin: 0 auto;
   padding: 0rem;
   text-align: center;
+  display: grid;
+  grid-template-columns: 10vh 1fr;
+  grid-template-rows: 10vh 1fr;
+
 }
 
 
@@ -29,7 +49,11 @@ li {
 }
 
 .main {
-  padding-top: 8.2vh;
-  padding-left: 19vw;
+  margin-top: 1vh;
+  width: 100%;
+  background-color: inherit;
+  grid-row: 2 / 2;
+  grid-column: 2 / 3;
 }
+
 

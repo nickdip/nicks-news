@@ -100,13 +100,13 @@ export default function AllTopics() {
                     <div className="topic-container" key={topic}>
                         <div className="topics">
                             <div className="topic-title">{topic}</div>
-                            <div className="topic-description">
+                            {/* <div className="topic-description">
                                 {allTopics[topic] ? allTopics[topic] : null}
-                            </div>
+                            </div> */}
                             <div className="topic-articles">
                                 {articlesByTopic[topic]
                                     ? articlesByTopic[topic].map((article) => (
-                                        <Article key={article.id} article={article} />
+                                        <Article key={article.id} article={article} size={"normal"}/>
                                     ))
                                     : null}
                             </div>

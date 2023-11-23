@@ -29,7 +29,7 @@ export default function AllArticles() {
 
   const [ isAscending, setIsAscending ] = order ? useState(order === "asc") : useState(true)
 
-  const [ sortBy, setSortBy ] = useState({})
+  const [ selected, setSelected ] = useState("")
 
 
   const updateSearchParams = (params) => {
@@ -45,7 +45,15 @@ export default function AllArticles() {
     return isAscending ? "Lowest - Highest" : "Highest - Lowest "
   }
 
-  console.log(location.search)
+  const showSelected = (value, displayText) => {
+    if (value === searchParams.get("sort_by")) return (
+      <option selected="selected" value={value}>{displayText}</option>
+    )
+    return (
+      <option value={value}>{displayText}</option>
+    )
+  }
+
 
 
   useEffect(() => {
@@ -68,29 +76,30 @@ export default function AllArticles() {
   if (topicError) return <TopicError></TopicError>
 
   return (
-    <div>
+    <div className="all-articles-main">
       <h2>All Articles</h2>
       <div className="all-article-queries">
         <form>
           <label htmlFor="sort_by">Sort By: </label>
-          <select name="sort_by" id="sort_by" onChange={(e) => setSortBy(e.target.value)}>
-            <option value="created_at">Date</option>
-            <option value="comment_count">Comment Count</option>
-            <option value="votes">Votes</option>
+          <select name="sort_by" id="sort_by" onChange={(e) => updateSearchParams({sort_by: e.target.value })}>
+            {showSelected("created_at", "Date Created")}
+            {showSelected("votes", "Votes")}
+            {showSelected("comment_count", "Comments")}
           </select>
-          <button type="button" onClick={() => {updateSearchParams({sort_by: sortBy})}}>Sort</button>
         </form>
+        <div className="order">
         <Link className="order-pic-text" onClick={() => {
           setIsAscending(!isAscending)
           updateSearchParams({ order: returnOrder() })} }to={`/all?order=${returnOrder()}`}>
             <img src="../src/static/up-down-sort.png" className="order-arrows-pic" alt="up and down arrows to change whether order is ascending or descending"/>
             {orderTextDisplayed()}
             </Link>
+            </div>
       </div>
       <ul className="articles-list">
       {articles.map((article) => {
         return (<li key={`${article.article_id}-items`} className="article-li">
-        <Article article={article} imageSize={"normal"}></Article>
+        <Article article={article} size={"normal"}></Article>
         </li>)})}
       </ul>
     </div>

@@ -1,8 +1,27 @@
+form {
+    padding: 0.5rem;
+}
+
+.articles-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+
+}
+
+.all-articles-main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
 
 
 .all-article-queries {
     display: grid;
     grid-template-columns: 50% 50%;
+    align-items: end;
 }
 
 .all-article-queries {
@@ -12,19 +31,25 @@
     }
 }
 
+.order {
+    display: flex;
+    justify-content: center;
+}
+
 .order-pic-text {
+    display: inline;
     justify-items: center;
-    align-items: center;
     :is(a) {
         color: black;
     }
     :is(a) :clicked {
         color: black;
     }
+    padding: 0.5rem;
 }
 
 .order-arrows-pic {
-    padding-right: 0.3rem;
+    
     width: 1.5rem;
     height: auto;
 }
