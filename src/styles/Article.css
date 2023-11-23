@@ -22,6 +22,7 @@ a {
 
 @media (max-width: 800px) {
     .article-grid-small {
+        width: 16rem;
     }
 }
 
@@ -233,7 +234,7 @@ a {
 
 @media (max-width: 400px) {
     .article-list-img-normal  {
-        height: 20rem;
+        height: 10rem;
     }
 }
 
