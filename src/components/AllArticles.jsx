@@ -90,7 +90,7 @@ export default function AllArticles() {
       <ul className="articles-list">
       {articles.map((article) => {
         return (<li key={`${article.article_id}-items`} className="article-li">
-        <Article article={article} imageSize={"normal"}></Article>
+        <Article article={article} size={"normal"}></Article>
         </li>)})}
       </ul>
     </div>

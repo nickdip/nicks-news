@@ -1,13 +1,28 @@
 
 .home-flex {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
     margin-top: 5vh;
+    justify-content: center;
 }
 
+
+
 .home-main-article {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 
 }
 
 .home-small-articles {
-}
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
 
+}

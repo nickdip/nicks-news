@@ -44,14 +44,14 @@ export default function Home({homeKey, setHomeKey}) {
   return (
     <div className="home-flex">
       <div className="home-main-article">
-        <Article article={recentArticles[0]} imageSize={"xsmall"}></Article>
+        <Article article={recentArticles[0]} size={"large"}></Article>
       </div>
       <div className="home-small-articles">
         <div className="article1">
-         <Article article={recentArticles[1]} imageSize={"small"}></Article>
+         <Article article={recentArticles[1]} size={"small"}></Article>
          </div>
         <div className="article2">
-        <Article article={recentArticles[2]} imageSize={"small"}></Article>
+        <Article article={recentArticles[2]} size={"small"}></Article>
         </div>
       </div>
     </div>
