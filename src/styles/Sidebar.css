@@ -1,5 +1,6 @@
+
+
 .all-articles-link {
-    color: white;
     padding: 0.2rem;
     font-size: 1.3rem;
 
@@ -7,21 +8,22 @@
 
 
 .all-topics-link {
-    color: white;
     padding: 0.2rem;
     font-size: 1.3rem;
 }
 
+
 .sidebar {
     position: fixed;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
     top: 0;
     left: 0;
     bottom: 0;
     width: 10%;
-    background-color: rgb(0, 17, 70);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 0;
     transition: all 0.3s ease-in-out;
+    background-color:rgb(249, 249, 249)
 }
 
 @media (max-width: 600px) {

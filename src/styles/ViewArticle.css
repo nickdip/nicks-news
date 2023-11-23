@@ -5,10 +5,10 @@
     display: grid;
     grid-template-rows: repeat(6, auto);
     margin-bottom: 1rem;
-    margin-top: 10vh;
-    z-index: -1;
-    margin-right: 7vw;
-    margin-left: 7vw;
+    margin-top: 3%;
+    z-index: -10;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 
 
