@@ -14,12 +14,6 @@ import Login from './components/Login'
 
 
 
-//TODO: Add alt text to images
-//TODO: Fix Nicks News crashing when on other pages
-//TODO: Improve user experience of loading spinner (don't include filters)
-//TODO: Fix error handling of loading spinner
-//TODO: Fix scroll
-
 export default function App() {
 
 
@@ -30,7 +24,6 @@ export default function App() {
   const [ homeKey, setHomeKey ] = useState(0)
 
   useEffect(() => {
-    console.log(user, "USER HERE?")
     loginUser(user)
   }, [])
 

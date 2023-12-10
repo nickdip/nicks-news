@@ -9,9 +9,9 @@
 }
 
 
-
 .home-main-article {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -20,9 +20,28 @@
 
 .home-small-articles {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    flex-direction: row;
     align-content: center;
     justify-content: space-around;
 
 }
+
+
+@media only screen and (max-width: 800px) {
+    .home-main-article {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    
+    }
+
+    .home-small-articles {
+        align-content: center;
+        justify-content: center;
+    
+    }
+
+    
+  }

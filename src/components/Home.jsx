@@ -7,8 +7,6 @@ import "../styles/Home.css"
 
 export default function Home({homeKey, setHomeKey}) {
 
-  console.log(homeKey, "homeKey")
-
 
   const containerRef = useRef(null)
 
@@ -36,6 +34,7 @@ export default function Home({homeKey, setHomeKey}) {
     window.addEventListener('scroll', handleScroll)
     
   }, [homeKey])
+
 
 
 
