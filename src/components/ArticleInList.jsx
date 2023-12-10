@@ -2,6 +2,8 @@ import React from 'react'
 import "../styles/Article.css"
 import dateFormat from "../utils/dateFormat"
 import { Link } from 'react-router-dom'
+import upVote from "../static/up.png"
+
 
 export default function Article({article, size}) {
     return (
@@ -15,7 +17,7 @@ export default function Article({article, size}) {
         <li key={`${article.article_id}-votes`} className={`article-list-votes-${size}`}>
             <div className={`votes-pic-text-${size}`}>
                 {article.votes}
-                <img src="../src/static/up.png" className={`votes-picture-${size}`}/>
+                <img src={upVote} className={`votes-picture-${size}`}/>
             </div>
             </li>
         </div>

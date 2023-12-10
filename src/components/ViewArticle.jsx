@@ -11,6 +11,8 @@ import useLoading from '../hooks/useLoading';
 import Loading from './Loading.jsx';
 import ArticleError from '../components/Errors/ArticleError.jsx'
 import BadRequestError from '../components/Errors/BadRequestError.jsx'
+import upVote from "../static/up.png"
+import downVote from "../static/down.png"
 
 
 export default function ViewArticle() {
@@ -89,9 +91,9 @@ export default function ViewArticle() {
         <div className="viewArticle-body">{article.body}</div>
         <div className="viewArticle-votes"><span style={votesColour(article.votes)}>{currentVotes}</span>
             <a href="#" onClick={ () => handleVote(1)}>
-            <img src={"../src/static/up.png"} className="viewArticle-votes-up"/></a>
+            <img src={upVote} className="viewArticle-votes-up"/></a>
             <a href="#" onClick={ () => handleVote(-1) }>
-            <img src={"../src/static/down.png"} className="viewArticle-votes-down"/></a>
+            <img src={downVote} className="viewArticle-votes-down"/></a>
             </div>
         <div className="viewArticle-comment"><a href="#comments">Comments ({article.comment_count})</a></div>
     </div>

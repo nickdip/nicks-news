@@ -7,6 +7,7 @@ import '../styles/AllArticles.css'
 import useLoading from '../hooks/useLoading'
 import Loading from './Loading'
 import TopicError from './Errors/TopicError.jsx'
+import sortImage from "../static/up-down-sort.png"
 
 
 export default function AllArticles() {
@@ -90,8 +91,8 @@ export default function AllArticles() {
         <div className="order">
         <Link className="order-pic-text" onClick={() => {
           setIsAscending(!isAscending)
-          updateSearchParams({ order: returnOrder() })} }to={`/all?order=${returnOrder()}`}>
-            <img src="../src/static/up-down-sort.png" className="order-arrows-pic" alt="up and down arrows to change whether order is ascending or descending"/>
+          updateSearchParams({ order: returnOrder() })} }to={`/articles?order=${returnOrder()}`}>
+            <img src={sortImage} className="order-arrows-pic" alt="up and down arrows to change whether order is ascending or descending"/>
             {orderTextDisplayed()}
             </Link>
             </div>
