@@ -16,7 +16,6 @@ export function UserProvider( {children} ) {
     }, [])
 
     const loginUser = (username) => {
-        console.log(username, ">>>>>username")
         NewsAPI.login(username).then((user) => {
             setUser(user)
             setCookie('username', user, { path: '/' })
